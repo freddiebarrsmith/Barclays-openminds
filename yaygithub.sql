@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `serverlist` (
   `OS` varchar(200) DEFAULT NULL,
   `CPUamount` int(11) DEFAULT NULL,
   `Name` varchar(200) DEFAULT NULL,
-  `OriginalName` varchar(200) DEFAULT NULL,
+  `ID` varchar(200) DEFAULT NULL,
   `ChildrenCount` varchar(200) DEFAULT NULL,
   `HostType` varchar(200) DEFAULT NULL,
   `ParentID` varchar(200) DEFAULT NULL,
