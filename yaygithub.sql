@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `serverlist` (
 -- Dumping data for table `serverlist`
 --
 
-INSERT INTO `serverlist` (`IPid`, `IP`, `OS`, `CPUamount`, `Name`, `OriginalName`, `ChildrenCount`, `HostType`, `ParentID`) VALUES
+INSERT INTO `serverlist` (`IPid`, `IP`, `OS`, `CPUamount`, `Name`, `ID`, `ChildrenCount`, `HostType`, `ParentID`) VALUES
 (1, '22.122.174.98', 'Linux  [2.6.32-358.2.1.el6.x86_64]', 2, 'CpuCount', '7', '3', 'DEV', '5'),
 (2, '10.108.193.83', 'Windows 7  [6.1]', 8, 'CpuCount', '9', '3', 'DEV', '5'),
 (3, '10.41.24.236', 'Windows 7  [6.1]', 4, 'CpuCount', '11', '4', 'PROD', '5'),
