@@ -1,5 +1,47 @@
 <html>
    <head>
+      <!--Connect to the database-->
+      <?php
+         // Database login details
+	      $DB_NAME = 'cl51-openminds';
+	      $DB_HOST = 'localhost';
+	      $DB_USER = 'cl51-openminds';
+	      $DB_PASS = 'hashtag';
+	
+	      // Connect to database server
+	      $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+	
+	      if ($mysqli->connect_errno) {
+		      printf("Connect failed: %s\n", $mysqli->connect_error);
+		      exit();
+	      }
+	      
+	      $i = 0;
+	      
+	      $hostTypes = array();
+	
+	      // Sets sql charset to utf-8
+	      $mysqli->set_charset("utf8");
+	      
+	      $sql = "SELECT HostType, COUNT(HostType) AS "Num" FROM serverlist GROUP BY HostType";
+		
+	      // Fill 2-dimensional array with article preview details
+	      $query = $mysqli->query($sql);
+	      $query_num = $query->num_rows;
+	      if (!empty($query_num))
+	      {
+            while($query_row = $query->fetch_assoc())
+            {
+               $hostTypes($i) = $query_row['Num'];
+               
+               $i++;
+            }
+			}
+	   ?>
+	   <script>
+         var id = <?php echo $starttime1; ?>;
+         var id2 = <?php echo $endtime1; ?>;
+      </script>
       <!--Load the AJAX API-->
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       <script type="text/javascript">
@@ -16,14 +58,17 @@
 
          // Create the data table.
          var data = new google.visualization.DataTable();
-         data.addColumn('string', 'Distro');
-         data.addColumn('number', 'Servers');
+         data.addColumn('string', 'hostType');
+         data.addColumn('number', 'hostTypeCount');
          data.addRows([
-            ['Red Hat', 3],
-            ['Ubuntu', 1],
-            ['Trisquel', 8],
-            ['Debian', 1],
-            ['gNewSense', 2]
+            ['CIT', <?php echo $hostTypes[0]; ?>],
+            ['DEV', <?php echo $hostTypes[1]; ?>],
+            ['DR', <?php echo $hostTypes[2]; ?>],
+            ['OAT', <?php echo $hostTypes[3]; ?>],
+            ['PROD', <?php echo $hostTypes[4]; ?>],
+            ['SIT', <?php echo $hostTypes[5]; ?>],
+            ['UAT', <?php echo $hostTypes[6]; ?>],
+            ['UNCLASSIFIED', <?php echo $hostTypes[7]; ?>];
          ]);
 
          // Set chart options
@@ -40,7 +85,7 @@
             var selectedItem = pie_chart.getSelection()[0];
             if (selectedItem) {
 	            var distro = data.getValue(selectedItem.row, 0);
-	            alert('The user selected ' + distro);
+	            alert('The user selected ' + hostType);
             }
          }
 
