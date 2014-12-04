@@ -32,16 +32,10 @@
 	      {
             while($query_row = $query->fetch_assoc())
             {
-               $hostTypes($i) = $query_row['Num'];
-               
-               $i++;
+               // KING CUNT: Add the data from the mysqli query to the array here so it can be used...
             }
 			}
 	   ?>
-	   <script>
-         var id = <?php echo $starttime1; ?>;
-         var id2 = <?php echo $endtime1; ?>;
-      </script>
       <!--Load the AJAX API-->
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       <script type="text/javascript">
@@ -60,6 +54,7 @@
          var data = new google.visualization.DataTable();
          data.addColumn('string', 'hostType');
          data.addColumn('number', 'hostTypeCount');
+         // KING CUNT: ...here
          data.addRows([
             ['CIT', <?php echo $hostTypes[0]; ?>],
             ['DEV', <?php echo $hostTypes[1]; ?>],
