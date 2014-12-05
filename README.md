@@ -16,11 +16,11 @@
 
 ####Timeline
 
-~~12:00: Start~~
-~~16:00: Completed .cvs creation~~
-~~22:00: Pub~~
-~~00:00: Return from pub~~
-~~02:00: Have documentation of database completed~~
-~~04:00: Have infovis plan completed~~
-09:00: Have infovis implemented
-10:00: Have matrix transition implemented, finish
+- ~~12:00: Start~~
+- ~~16:00: Completed .cvs creation~~
+- ~~22:00: Pub~~
+- ~~00:00: Return from pub~~
+- ~~02:00: Have documentation of database completed~~
+- ~~04:00: Have infovis plan completed~~
+- 09:00: Have infovis implemented
+- 10:00: Have matrix transition implemented, finish
