@@ -3,14 +3,14 @@
 
 ####Tasks
 
-~~1. Write Python Script to convert JSON data to .cvs~~
-~~2. Examine data, document findings for later~~
-3. Create infovis
-	~~1. Work out how to display data from .cvs~~
-	2. Build Google Maps visualisation using API
-	~~3. Build Google Charts visualisations using API~~
-4. Add Matrix Transition
-5. Relax and bask in the glow of a job well-done
+- ~~Write Python Script to convert JSON data to .cvs~~
+- ~~Examine data, document findings for later~~
+- Create infovis
+	- ~~Work out how to display data from .cvs~~
+	- Build Google Maps visualisation using API
+	- ~~Build Google Charts visualisations using API~~
+- Add Matrix Transition
+- Relax and bask in the glow of a job well-done
 
 ---
 
