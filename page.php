@@ -22,10 +22,8 @@
 	
 	      // Sets sql charset to utf-8
 	      $mysqli->set_charset("utf8");
-	      
-	      $sql = "SELECT HostType, COUNT(HostType) AS "Num" FROM serverlist GROUP BY HostType";
 		
-	      $result = mysqli_query($mysqli, "SELECT HostType, COUNT(HostType) AS "Num" FROM serverlist GROUP BY HostType;");  
+	      $result = mysqli_query($mysqli, "SELECT HostType, COUNT(HostType) AS \"Num\" FROM serverlist GROUP BY HostType;");  
  
          while($row = mysqli_fetch_row($result)){
             // puts the value for COUNT(HostType) into $num{i}, so $num0, $num1, $num2, etc.
