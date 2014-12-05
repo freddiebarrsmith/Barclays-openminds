@@ -39,8 +39,6 @@
          // Set a callback to run when the Google Visualization API is loaded.
          google.setOnLoadCallback(drawChart);
          
-         /* THE ISSUE IS SOMEWHERE BETWEEN HERE...
-         
          // Callback that creates and populates a data table,
          // instantiates the pie chart, passes in the data and
          // draws it.
@@ -58,9 +56,9 @@
                ['PROD', <?php echo $hostType[4]; ?>],
                ['SIT', <?php echo $hostType[5]; ?>],
                ['UAT', <?php echo $hostType[6]; ?>],
-               ['UNCLASSIFIED', <?php echo $hostType[7]; ?>];
+               ['UNCLASSIFIED', <?php echo $hostType[7]; ?>]
             ]);
-
+            
             // Set chart options
             var options = {'title':'Types of Servers',
                            'width':400,
@@ -69,12 +67,23 @@
             // Instantiate and draw our chart, passing in some options.
             var pie_chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
             var bar_chart = new google.visualization.BarChart(document.getElementById('bar_chart'));
+            
+            // The select handler. Call the chart's getSelection() method
+            function selectHandler() {
+               var selectedItem = pie_chart.getSelection()[0];
+               if (selectedItem) {
+                  var hostType = data.getValue(selectedItem.row, 1);
+                  var hostTypeNum = data.getValue(selectedItem.row, 0);
+                  alert('There are ' + hostType + ' machines running as ' + hostTypeNum);
+               }
+            }
+            // Listen for the 'select' event, and call my function selectHandler() when
+            // the user selects something on the chart.
+            google.visualization.events.addListener(pie_chart, 'select', selectHandler);
 
             pie_chart.draw(data, options);
             bar_chart.draw(data, options);
          }
-         
-         ...AND HERE */
       </script>
    </head>
 
