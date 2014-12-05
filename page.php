@@ -18,16 +18,15 @@
 	      
 	      $i = 0;
 	      
-	      $hostTypes = array();
+	      $hostType = array();
 	
 	      // Sets sql charset to utf-8
 	      $mysqli->set_charset("utf8");
 		
-	      $result = mysqli_query($mysqli, "SELECT HostType, COUNT(HostType) AS \"Num\" FROM serverlist GROUP BY HostType;");  
- 
+	      $result = mysqli_query($mysqli, 'SELECT COUNT(HostType) AS "Num" FROM serverlist GROUP BY HostType;');
          while($row = mysqli_fetch_row($result)){
             // puts the value for COUNT(HostType) into $num{i}, so $num0, $num1, $num2, etc.
-            $hostType[$i] = $row[1];
+            $hostType[$i] = $row[0];
             $i = $i + 1;
          }
 	   ?>
@@ -39,52 +38,43 @@
 
          // Set a callback to run when the Google Visualization API is loaded.
          google.setOnLoadCallback(drawChart);
-
+         
+         /* THE ISSUE IS SOMEWHERE BETWEEN HERE...
+         
          // Callback that creates and populates a data table,
          // instantiates the pie chart, passes in the data and
          // draws it.
          function drawChart() {
 
-         // Create the data table.
-         var data = new google.visualization.DataTable();
-         data.addColumn('string', 'hostType');
-         data.addColumn('number', 'hostTypeCount');
-         data.addRows([
-            ['CIT', <?php echo $hostTypes[0]; ?>],
-            ['DEV', <?php echo $hostTypes[1]; ?>],
-            ['DR', <?php echo $hostTypes[2]; ?>],
-            ['OAT', <?php echo $hostTypes[3]; ?>],
-            ['PROD', <?php echo $hostTypes[4]; ?>],
-            ['SIT', <?php echo $hostTypes[5]; ?>],
-            ['UAT', <?php echo $hostTypes[6]; ?>],
-            ['UNCLASSIFIED', <?php echo $hostTypes[7]; ?>];
-         ]);
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'hostType');
+            data.addColumn('number', 'hostTypeCount');
+            data.addRows([
+               ['CIT', <?php echo $hostType[0]; ?>],
+               ['DEV', <?php echo $hostType[1]; ?>],
+               ['DR', <?php echo $hostType[2]; ?>],
+               ['OAT', <?php echo $hostType[3]; ?>],
+               ['PROD', <?php echo $hostType[4]; ?>],
+               ['SIT', <?php echo $hostType[5]; ?>],
+               ['UAT', <?php echo $hostType[6]; ?>],
+               ['UNCLASSIFIED', <?php echo $hostType[7]; ?>];
+            ]);
 
-         // Set chart options
-         var options = {'title':'Distro Proportions Among Servers',
-                    'width':400,
-                    'height':300};
+            // Set chart options
+            var options = {'title':'Types of Servers',
+                           'width':400,
+                           'height':300};
 
-         // Instantiate and draw our chart, passing in some options.
-         var pie_chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
-         var bar_chart = new google.visualization.BarChart(document.getElementById('bar_chart'));
+            // Instantiate and draw our chart, passing in some options.
+            var pie_chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+            var bar_chart = new google.visualization.BarChart(document.getElementById('bar_chart'));
 
-         // The select handler. Call the chart's getSelection() method
-         function selectHandler() {
-            var selectedItem = pie_chart.getSelection()[0];
-            if (selectedItem) {
-	            var distro = data.getValue(selectedItem.row, 0);
-	            alert('The user selected ' + hostType);
-            }
+            pie_chart.draw(data, options);
+            bar_chart.draw(data, options);
          }
-
-         // Listen for the 'select' event, and call my function selectHandler() when
-         // the user selects something on the chart.
-         google.visualization.events.addListener(pie_chart, 'select', selectHandler);
-
-              pie_chart.draw(data, options);
-         bar_chart.draw(data, options);
-         }
+         
+         ...AND HERE */
       </script>
    </head>
 
@@ -93,7 +83,5 @@
       <div id="pie_chart" style="display: inline; float: left;"></div>
       <!--Div that will hold the bar chart-->
       <div id="bar_chart" style="display: inline; float: left;"></div>
-      <!--Div that will hold the Sankey chart-->
-      <div id="Sankey_chart" style="display: inline; float: left;"></div>
    </body>
 </html>
