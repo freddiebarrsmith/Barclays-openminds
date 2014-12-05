@@ -7,9 +7,9 @@
 - ~~Examine data, document findings for later~~
 - Create infovis
 	- ~~Work out how to display data from .cvs~~
-	- Build Google Maps visualisation using API
+	- ~~Build Google Maps visualisation using API~~
 	- ~~Build Google Charts visualisations using API~~
-- Add Matrix Transition
+- ~~Add Matrix Transition~~
 - Relax and bask in the glow of a job well-done
 
 ---
@@ -22,5 +22,5 @@
 - ~~00:00: Return from pub~~
 - ~~02:00: Have documentation of database completed~~
 - ~~04:00: Have infovis plan completed~~
-- 09:00: Have infovis implemented
+- ~~09:00: Have infovis implemented~~
 - 10:00: Have matrix transition implemented, finish
