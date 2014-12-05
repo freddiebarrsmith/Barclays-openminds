@@ -25,22 +25,19 @@
 	      
 	      $sql = "SELECT HostType, COUNT(HostType) AS "Num" FROM serverlist GROUP BY HostType";
 		
-	      // Fill 2-dimensional array with article preview details
-	      $query = $mysqli->query($sql);
-	      $query_num = $query->num_rows;
-	      if (!empty($query_num))
-	      {
-            while($query_row = $query->fetch_assoc())
-            {
-               // KING CUNT: Add the data from the mysqli query to the array here so it can be used...
-            }
-			}
+	      $result = mysqli_query($mysqli, "SELECT HostType, COUNT(HostType) AS "Num" FROM serverlist GROUP BY HostType;");  
+ 
+         while($row = mysqli_fetch_row($result)){
+            // puts the value for COUNT(HostType) into $num{i}, so $num0, $num1, $num2, etc.
+            $hostType[$i] = $row[1];
+            $i = $i + 1;
+         }
 	   ?>
       <!--Load the AJAX API-->
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       <script type="text/javascript">
          // Load the Visualization API and the piechart package.
-         google.load('visualization', '1.0', {'packages':['corechart'],['sankey'});
+         google.load('visualization', '1.0', {'packages':['corechart']});
 
          // Set a callback to run when the Google Visualization API is loaded.
          google.setOnLoadCallback(drawChart);
@@ -54,7 +51,6 @@
          var data = new google.visualization.DataTable();
          data.addColumn('string', 'hostType');
          data.addColumn('number', 'hostTypeCount');
-         // KING CUNT: ...here
          data.addRows([
             ['CIT', <?php echo $hostTypes[0]; ?>],
             ['DEV', <?php echo $hostTypes[1]; ?>],
